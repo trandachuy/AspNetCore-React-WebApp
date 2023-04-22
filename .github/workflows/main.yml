@@ -8,5 +8,14 @@ jobs:
     - name: Git checkout
       uses: actions/checkout@v3
     - name: docker build image
-      run: docker build -f dockerfile .
-  
+      run: docker build -t huydactran1604/dotnet-build:latest .
+    - name: Docker Login
+      uses: docker/login-action@v2.1.0
+      with:
+        username: huydactran1604
+        password: trandachuy160495
+    - name: Push Image to DockerHub
+      run: |
+        docker images
+        docker push huydactran1604/dotnet-build:latest
+    
